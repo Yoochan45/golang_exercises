@@ -10,10 +10,13 @@ package main
 // email (field harus memiliki value dengan format yang sesuai email, bisa gunakan explorasi regex pada golang https://gobyexample.com/regular-expressions)
 
 import (
+	"bufio"
 	"errors"
 	"fmt"
+	"os"
 	"reflect"
 	"regexp"
+	"strings"
 )
 
 // Struct untuk validasi
@@ -115,12 +118,19 @@ func parseTag(tag string) map[string]string {
 
 // Fungsi utama
 func main() {
-	user := User{
-		Name:  "John Doe",
-		Age:   30,
-		Email: "Example@mail.com",
-	}
+	var user User
+	reader := bufio.NewReader(os.Stdin)
 
+	fmt.Print("Input name: ")
+	name, _ := reader.ReadString('\n')
+	user.Name = strings.TrimSpace(name)
+
+	fmt.Print("Input email:")
+	email, _ := reader.ReadString('\n')
+	user.Email = strings.TrimSpace(email)
+
+	fmt.Print("Input age: ")
+	fmt.Scan(&user.Age)
 	if err := ValidateStruct(user); err != nil {
 		fmt.Println("Validation error:", err)
 	} else {
