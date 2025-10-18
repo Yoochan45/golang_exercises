@@ -29,8 +29,17 @@ type User struct {
 // Fungsi untuk melakukan validasi berdasarkan tag
 func ValidateStruct(s interface{}) error {
 	v := reflect.ValueOf(s)
+
+	// handle pointer to struct
+	if v.Kind() == reflect.Ptr {
+		if v.IsNil() {
+			return errors.New("nil pointer passed")
+		}
+		v = v.Elem()
+	}
+
 	if v.Kind() != reflect.Struct {
-		return errors.New("input must be a struct")
+		return errors.New("input must be a struct or pointer to a struct")
 	}
 
 	t := v.Type()
