@@ -264,11 +264,6 @@ Atau cukup buat **issue** untuk diskusi atau request materi.
 
 **Author**: Aisiya Qutwatunnada
 
-Untuk pertanyaan atau bantuan:
-- 🐛 **Bug reports**: Buat GitHub issue
-- 💬 **Diskusi**: Buat discussion thread
-- ✉️ **Direct contact**: [Tambahkan kontak jika mau]
-
 ## 📄 License
 
 Repository ini free untuk digunakan untuk tujuan pembelajaran.
